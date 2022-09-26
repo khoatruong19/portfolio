@@ -1,6 +1,12 @@
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Project, Skill } from '@prisma/client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { trpc } from '../../utils/trpc';
 import HeaderTitle from './HeaderTitle';
 import SaveButton from './SaveButton';
@@ -11,7 +17,7 @@ interface IProps {
   add?: boolean;
   project?: Project;
   openNow?: boolean;
-  setOpenNow?: Function;
+  setOpenNow?: Dispatch<SetStateAction<boolean>>;
 }
 
 const ProjectModal = ({ add, project, openNow, setOpenNow }: IProps) => {
@@ -67,7 +73,7 @@ const ProjectModal = ({ add, project, openNow, setOpenNow }: IProps) => {
   const handleEditProject = () => {
     updateProject.mutate(
       {
-        id: project?.id!,
+        id: project?.id as string,
         title,
         image,
         description,

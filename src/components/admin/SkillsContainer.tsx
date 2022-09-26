@@ -1,12 +1,12 @@
 import { Skill } from '@prisma/client';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import SkillCard from './SkillCard';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
 import SkillModal from './SkillModal';
 
 interface IProps {
   skills: Skill[];
-  setSkills: Function;
+  setSkills: Dispatch<SetStateAction<Skill[]>>;
 }
 
 const SkillsContainer = ({ skills, setSkills }: IProps) => {
@@ -14,12 +14,12 @@ const SkillsContainer = ({ skills, setSkills }: IProps) => {
   const [selectedSkill, setSelectedSkill] = useState<Skill>();
 
   const handleDeleteSkill = (id: string) => {
-    let temp = skills.filter((skill) => skill.id !== id);
+    const temp = skills.filter((skill) => skill.id !== id);
     setSkills(temp);
   };
   const handleEditSkill = (skill: Skill) => {
-    let skillIndex = skills.findIndex((item) => item.id === skill.id);
-    let temp = skills;
+    const skillIndex = skills.findIndex((item) => item.id === skill.id);
+    const temp = skills;
     temp[skillIndex] = skill;
     setSkills(temp);
     setTriggerOpenModal(false);

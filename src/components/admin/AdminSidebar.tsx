@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import AdminMenuCard from './AdminMenuCard';
 
 interface IProps {
-  setMenu: Function;
+  setMenu: Dispatch<SetStateAction<string>>;
   menu: string;
 }
 

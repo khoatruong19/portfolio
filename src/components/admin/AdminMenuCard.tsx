@@ -1,7 +1,9 @@
+import { Dispatch, SetStateAction } from 'react';
+
 interface IProps {
   text: string;
   active: boolean;
-  setMenu: Function;
+  setMenu: Dispatch<SetStateAction<string>>;
 }
 
 const AdminMenuCard = ({ text, active, setMenu }: IProps) => {

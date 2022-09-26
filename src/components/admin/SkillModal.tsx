@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import HeaderTitle from './HeaderTitle';
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import SaveButton from './SaveButton';
@@ -7,11 +13,11 @@ import { nanoid } from 'nanoid';
 
 interface IProps {
   add?: boolean;
-  setSkills: Function;
+  setSkills: Dispatch<SetStateAction<Skill[]>>;
   skill?: Skill;
   editSkill?: (skill: Skill) => void;
   openNow?: boolean;
-  setOpenNow?: Function;
+  setOpenNow?: Dispatch<SetStateAction<boolean>>;
 }
 
 const SkillModal = ({
@@ -62,7 +68,7 @@ const SkillModal = ({
   };
 
   const handleEditSkill = () => {
-    editSkill!({ id: skill?.id!, title, progress, image });
+    editSkill!({ id: skill?.id as string, title, progress, image });
     setOpen(false);
     setOpenNow && setOpenNow(false);
   };

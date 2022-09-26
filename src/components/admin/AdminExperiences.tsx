@@ -33,7 +33,10 @@ const AdminExperiences = () => {
       <ExperienceModal add />
       <div className="w-full flex flex-wrap justify-evenly">
         {data?.map((experience) => (
-          <div className="relative w-[48%] p-5 border border-borderGrayColor text-white flex flex-col justify-between">
+          <div
+            key={experience.id}
+            className="relative w-[48%] p-5 border border-borderGrayColor text-white flex flex-col justify-between"
+          >
             <div>
               <div className="h-[160px] flex items-center justify-center">
                 <img

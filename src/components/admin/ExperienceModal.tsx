@@ -1,6 +1,12 @@
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { Experience, Skill } from '@prisma/client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { trpc } from '../../utils/trpc';
@@ -14,7 +20,7 @@ interface IProps {
   add?: boolean;
   experience?: Experience;
   openNow?: boolean;
-  setOpenNow?: Function;
+  setOpenNow?: Dispatch<SetStateAction<boolean>>;
 }
 
 const ExperienceModal = ({ add, experience, openNow, setOpenNow }: IProps) => {
@@ -75,7 +81,7 @@ const ExperienceModal = ({ add, experience, openNow, setOpenNow }: IProps) => {
     console.log({ jobTitle });
     updateExperience.mutate(
       {
-        id: experience?.id!,
+        id: experience?.id as string,
         company,
         companyImage,
         dateStarted,

@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import HeaderTitle from './HeaderTitle';
 import { PlusIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import SaveButton from './SaveButton';
@@ -7,11 +13,11 @@ import { nanoid } from 'nanoid';
 
 interface IProps {
   add?: boolean;
-  setSocials: Function;
+  setSocials: Dispatch<SetStateAction<Social[]>>;
   social?: Social;
   editSocial?: (social: Social) => void;
   openNow?: boolean;
-  setOpenNow?: Function;
+  setOpenNow?: Dispatch<SetStateAction<boolean>>;
 }
 
 const SocialModal = ({
@@ -40,7 +46,7 @@ const SocialModal = ({
   };
 
   const handleEditSocial = () => {
-    editSocial!({ id: social?.id!, name, url });
+    editSocial!({ id: social?.id as string, name, url });
     setOpen(false);
     setOpenNow && setOpenNow(false);
   };

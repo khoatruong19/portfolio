@@ -1,12 +1,12 @@
 import { Social } from '@prisma/client';
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
 import SocialCard from './SocialCard';
 import SocialModal from './SocialModal';
 
 interface IProps {
   socials: Social[];
-  setSocials: Function;
+  setSocials: Dispatch<SetStateAction<Social[]>>;
 }
 
 const SocialsContainer = ({ socials, setSocials }: IProps) => {
@@ -14,12 +14,12 @@ const SocialsContainer = ({ socials, setSocials }: IProps) => {
   const [selectedSocial, setSelectedSocial] = useState<Social>();
 
   const handleDeleteSocial = (id: string) => {
-    let temp = socials.filter((social) => social.id !== id);
+    const temp = socials.filter((social) => social.id !== id);
     setSocials(temp);
   };
   const handleEditSocial = (social: Social) => {
-    let socialIndex = socials.findIndex((item) => item.id === social.id);
-    let temp = socials;
+    const socialIndex = socials.findIndex((item) => item.id === social.id);
+    const temp = socials;
     temp[socialIndex] = social;
     setSocials(temp);
     setTriggerOpenModal(false);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { PencilIcon, TrashIcon, LinkIcon } from '@heroicons/react/24/solid';
 import { SocialIcon } from 'react-social-icons';
 import Link from 'next/link';
@@ -7,8 +7,8 @@ import { trpc } from '../../utils/trpc';
 
 interface IProps {
   project: Project;
-  selectProject: Function;
-  openEditModal: Function;
+  selectProject: Dispatch<SetStateAction<Project>>;
+  openEditModal: Dispatch<SetStateAction<boolean>>;
 }
 
 const ProjectCard = ({ project, selectProject, openEditModal }: IProps) => {

@@ -6,7 +6,7 @@ type FormData = {
 };
 
 interface IProps {
-  setIsAuthenticated: Function;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AdminLoginForm = ({ setIsAuthenticated }: IProps) => {

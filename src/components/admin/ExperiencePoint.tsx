@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { CheckIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/solid';
 
 interface IProps {
@@ -6,9 +6,9 @@ interface IProps {
   value?: string;
   index?: number;
   open?: boolean;
-  setOpen?: Function;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
   points?: string[];
-  setPoints?: Function;
+  setPoints?: Dispatch<SetStateAction<string[]>>;
 }
 
 const ExperiencePoint = ({ add, value, setPoints, points }: IProps) => {
@@ -26,8 +26,8 @@ const ExperiencePoint = ({ add, value, setPoints, points }: IProps) => {
 
   const handleEditExperience = () => {
     const index = points!.findIndex((item) => item === value);
-    let temp = points;
-    if (index) {
+    const temp = points;
+    if (index && temp) {
       temp![index] = point!;
       setPoints!(temp);
       setEdit(false);
