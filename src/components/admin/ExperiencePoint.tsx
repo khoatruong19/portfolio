@@ -35,7 +35,7 @@ const ExperiencePoint = ({ add, value, setPoints, points }: IProps) => {
   };
 
   const handleDeleteExperience = () => {
-    let temp = points!.filter((item) => item !== point);
+    const temp = points!.filter((item) => item !== point);
 
     setPoints!(temp);
   };

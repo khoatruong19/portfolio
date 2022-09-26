@@ -46,7 +46,7 @@ const Contact = () => {
         <h4 className="text-4xl font-semibold text-center">
           I have got just what you need.{' '}
           <span className="underline decoration-yellowColor/50">
-            Let's talk.
+            Let&apos;s talk.
           </span>
         </h4>
 
