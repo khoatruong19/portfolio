@@ -35,6 +35,15 @@ const Header = () => {
               target="_blank"
             />
           ))}
+
+        <a
+          rel="noreferrer"
+          target="_blank"
+          className="text-gray-500 hover:text-gray-400"
+          href="https://www.topcv.vn/xem-cv/V15VDgQEXlMHUA8IDgQPBwIABF1TVAMGXVwEBQf0f2"
+        >
+          My CV
+        </a>
       </motion.div>
 
       <Link href="#contact">
